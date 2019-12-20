@@ -23,29 +23,32 @@ function prepend(element, list){
 
 function nth(list, n) {
   	for(i=0; i<n; i++){
-       list = list.rest;
-  	}
-  	console.log(list);
-  	return list.value;
-     
+        list = list.rest;
+        if(list === null){ 
+          return undefined;
+        }
+  	}  	
+    return list.value;     
 }
 
-/*function recurNth(list, n) {
-   while (n>0) {
-     recurNth(list.rest, n-2);
-     list=list.rest;
+function recurNth(list, n) {
+   if(n==0 && list!== null){
+     return list.value;
    }
-   list.rest = null;
-   return list.value;
-}*/
+   else if(list === null){
+     return undefined;
+   }
+   else 
+     return recurNth(list.rest, n-1);
+}
 
- 
+
 console.log(arrayToList([10, 20]));
 // → {value: 10, rest: {value: 20, rest: null}}
 console.log(listToArray(arrayToList([10, 20, 30])));
 // → [10, 20, 30]
 console.log(prepend(10, prepend(20, null)));
 // → {value: 10, rest: {value: 20, rest: null}}
-console.log(nth(arrayToList([10, 20, 30]), 3));
+console.log(nth(arrayToList([10, 20, 30]), 2));
 // → 20
-//console.log(recurNth(arrayToList([10, 20, 30]), 1));
+console.log(recurNth(arrayToList([10, 20, 30]), 10));
