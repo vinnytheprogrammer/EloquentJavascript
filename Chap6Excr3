@@ -6,12 +6,13 @@ class Group {
   }
   
   add(x){
-    if(!this.elements.includes(x)){this.elements.push(x);}
+    if(!this.elements.includes(x)){this.elements.push(x); this.size = this.elements.length;}
   }
   
   delete(x){
     if(this.elements.includes(x)){
       this.elements.splice( this.elements.indexOf(x), 1 );
+      this.size = this.elements.length;
     }
   }
   
@@ -38,7 +39,7 @@ class GroupIterator{
   
   next(){
   	if (this.current == this.group.size) return {done: true};
-    let value = {current: this.current , value: this.elements[this.current]};
+    let value = {current: this.current , value: this.group.elements[this.current]};
     this.current++;
     return {value : value , done: false};
   }
@@ -48,8 +49,8 @@ Group.prototype[Symbol.iterator] = function() {
   return new GroupIterator(this);
 };
 
-for (let value of Group.from(["a", "b", "c"])) {
-  console.log(value);
+for (let i of Group.from(["a", "b","b", "c"])) {
+  console.log(i);
 }
 // → a
 // → b
