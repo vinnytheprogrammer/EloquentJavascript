@@ -1,6 +1,6 @@
 // Your code here.
 function deepEqual(object1, object2){
-  if(typeof object1 === "object" && object1 != null){
+  if(typeof object1 === "object" && object1 !== null){
     let result = true;
     let object1keys = Object.keys(object1);
     let object2keys = Object.keys(object2);
