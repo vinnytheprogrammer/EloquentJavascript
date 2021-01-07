@@ -23,8 +23,8 @@ function compareRobots(robot1, memory1, robot2, memory2) {
     let turns = runRobotCompare(state, robot2, memory2);
     tot2+=turns;
   } 
-  console.log('The average number of turns for routeRobot is ' + tot1/100 );
-  console.log('The average number of turns for goalOrientedRobot is ' + tot2/100 );
+  console.log('The average number of turns for routeRobot is ' + tot1/100.0 );
+  console.log('The average number of turns for goalOrientedRobot is ' + tot2/100.0 );
 
 }
 
